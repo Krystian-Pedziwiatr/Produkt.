@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Dodaj wariant – {{ product.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('variants.static', filename='css/variants_add.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+
+    <div class="settings-header">
+        <img src="{{ url_for('static', filename='icons/variants.svg') }}" alt="Warianty" style="width:10%; height:auto;">
+        <h1 class="module-name">Dodaj wariant</h1>
+        <p class="module-description">
+            Uzupełnij dane potrzebne do utworzenia wariantu produktu oraz automatycznego wygenerowania zdjęć w opisie.
+        </p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="mb-3">
+            {% for category, msg in messages %}
+            <div class="alert alert-{{ category }}">{{ msg }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="settings-form">
+
+        <h4 class="mt-3">✨ Generowanie linków do zdjęć</h4><br>
+
+        <div class="mb-3">
+            <label class="form-label">Nazwa wariantu produktu *</label>
+            <input type="text" name="color" placeholder="np. czarny" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Bazowy url</label>
+            <input type="text" disabled value="{{ base_url }}">
+            <small class="form-text">Aby dokonać zmiany bazowego url udaj się do ustawień.</small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Foldery w których umieszczne są zdjęcia na serwerze*</label>
+            <input type="text" name="folder" placeholder="LD/Kodo/gallery/" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nazwy plików zdjęć *</label>
+            <input type="text" name="prefix" placeholder="LD-panel-kodo-czarny-" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Prefixy *</label>
+            <input type="text" name="suffixes" placeholder="4,2,wizualizacja" required>
+            <small class="form-text">Oddziel przecinkami. Dla każdego suffixu zostanie wygenerowany link do zdjęcia.</small>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h4 class="mt-3">📎 Linki do tworzenia wiadomości mailowych, przekierowań lub pod przyciski</h4>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Link 1</label>
+            <input type="url" name="link_url" placeholder="np. https://weneve.com/pl/122-listwy-i-profile?order=product.sales.desc">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 2</label>
+            <input type="url" name="link2_url">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 3</label>
+            <input type="url" name="link3_url">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 4</label>
+            <input type="url" name="link4_url">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 5</label>
+            <input type="url" name="link5_url">
+        </div>
+
+
+        <button type="submit" class="btn-primary">Dodaj wariant</button>
+
+        <a href="{{ url_for('variants.variants_products_list') }}"
+           class="btn-secondary">Powrót</a>
+    </form>
+</div>
+{% endblock %}

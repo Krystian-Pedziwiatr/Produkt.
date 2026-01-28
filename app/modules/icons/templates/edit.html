@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - Edycja ikony{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('icons.static', filename='css/icons.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="icon-editor">
+
+    <div class="editor-header">
+        <h1 class="module-name">Edytuj ikonę</h1>
+        <p class="module-description">
+            Zmień nazwę, kategorię lub adres URL ikony.
+            Po zapisaniu zmiany będą widoczne w bibliotece ikon.
+        </p>
+    </div>
+
+    <form action="{{ url_for('icons.edit_icon', icon_id=icon.id) }}" method="POST" class="editor-form">
+
+        <!-- Podgląd aktualnej ikony -->
+        <div class="icon-preview-box">
+            <img src="{{ icon.url }}" alt="{{ icon.name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Nazwa ikony *</label>
+            <input type="text" id="name" name="name" required value="{{ icon.name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="url">URL ikony *</label>
+            <input type="text" id="url" name="url" required value="{{ icon.url }}">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Kategoria (opcjonalnie)</label>
+            <input type="text" id="category" name="category" value="{{ icon.category }}">
+        </div>
+
+        <button type="submit" class="btn-primary">Zapisz zmiany</button>
+
+        <a href="{{ url_for('icons.manage') }}" class="btn-secondary return-btn">Wróć</a>
+
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,438 @@
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+
+/* NAVBAR — SOLID DARK (spójny z sidebarem) */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-color: #121E23;
+    color: #fff;
+    padding: 15px 0;
+
+    /* delikatny glass + separacja */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    box-shadow:
+        0 6px 24px rgba(0,0,0,0.35),
+        inset 0 -1px 0 rgba(255,255,255,0.06);
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* kontener */
+.navbar .container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+/* Center container */
+.navbar .container {
+  width: 92%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo + brand */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* logo stays clean – no bullshit */
+.nav-brand img {
+  height: 36px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+
+/* Actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Nav links */
+.nav-link {
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Apple hover = light, not movement */
+.nav-link:hover {
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+
+/* Logout icon — keep original behavior, soften it */
+.logout-icon img {
+  height: 22px;
+  width: 22px;
+  filter: invert(1) drop-shadow(0 1px 3px rgba(0,0,0,0.35));
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.logout-icon:hover img {
+  opacity: 0.75;
+  transform: scale(1.08);
+}
+
+/* Mobile adjustments */
+@media (max-width: 860px) {
+  .nav-actions .nav-link {
+    display: none;
+  }
+}
+
+/* Focus accessibility — macOS blue ring */
+.nav-link:focus,
+.logout-icon:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(90,120,255,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+
+/* ================================
+   HERO — glassy, premium SaaS look
+================================ */
+
+.hero {
+    width: 100%;
+    padding: 70px 20px;
+    text-align: center;
+
+    background: linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.55)
+      ),
+      url("../images/background-1.jpg") center/cover no-repeat;
+
+    border-radius: 20px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+
+    color: #fff;
+    margin-bottom: 55px;
+}
+
+.hero-content h1 {
+    font-size: 2.9rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.hero-content p {
+    font-size: 1.18rem;
+    max-width: 650px;
+    margin: 0 auto 30px auto;
+    opacity: 0.92;
+    color: white;
+}
+
+/* CTA button */
+.hero-btn {
+    display: inline-block;
+    background: linear-gradient(135deg,
+        #4ea8ff 0%,
+        #6b6dff 45%,
+        #9b4dff 100%
+    );
+    background-size: 220% 220%;
+    color: white;
+
+    padding: 14px 30px;
+    border-radius: 12px;
+
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+
+.hero-btn:hover {
+    background-position: 100% 0%;
+    transform: translateY(-3px);
+}
+
+
+/* ================================
+   FEATURES — sekcja kart
+================================ */
+
+.features {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.features h2 {
+    font-size: 2rem;
+    color: #22282e;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    margin-bottom: 28px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+}
+
+/* feature cards */
+.feature-box {
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 26px 22px;
+
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+    backdrop-filter: blur(6px);
+}
+
+.feature-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 34px rgba(0,0,0,0.12);
+}
+
+.feature-box img {
+    width: 65px;
+    margin-bottom: 18px;
+}
+
+.feature-box h3 {
+    font-size: 1.28rem;
+    color: #151a1f;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 0.96rem;
+    color: #444;
+    line-height: 1.45;
+}
+
+.no-products {
+    font-size: 16px;
+    padding: 22px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    color: #444;
+}
+
+
+/* ===========================
+   KONTAINER USTAWIEŃ (WRAPPER)
+=========================== */
+.settings-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: "Inter", sans-serif;
+}
+
+/* ===========================
+   NAGŁÓWEK
+=========================== */
+.settings-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.module-name {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1d1f24;
+    margin-bottom: 8px;
+}
+
+.module-description {
+    font-size: 15px;
+    color: #6a6f76;
+}
+
+/* ===========================
+   FORMULARZ (KARTA)
+=========================== */
+.settings-form {
+    background: rgba(255,255,255,0.92);
+    padding: 28px 26px;
+    border-radius: 16px;
+    border: 1px solid rgba(230,230,230,0.9);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    backdrop-filter: blur(6px);
+
+    width: 100%;
+}
+
+/* ===========================
+   INPUTY
+=========================== */
+.settings-form .mb-3 {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.settings-form .form-label {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.settings-form input[type="text"],
+.settings-form input[type="url"],
+.settings-form input[type="email"],
+.settings-form input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 5px 0;
+    border: 1px solid #d2d6db;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #fff;
+
+    transition: border-color .25s, box-shadow .25s;
+}
+
+.settings-form input[type="text"]:focus,
+.settings-form input[type="url"]:focus {
+    border-color: #4ea8ff;
+    box-shadow: 0 0 0 3px rgba(78,168,255,0.25);
+    outline: none;
+}
+
+.form-text {
+    font-size: 13px;
+    color: #777;
+}
+
+/* ===========================
+   HR — separator
+=========================== */
+.settings-form hr {
+    border: none;
+    border-bottom: 1px solid #e4e4e4;
+    margin: 24px 0;
+}
+
+/* ===========================
+   ŚRÓDFORMULARZOWE NAGŁÓWKI
+=========================== */
+.settings-form h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #24262b;
+    margin-bottom: 14px;
+}
+
+
+/* ===========================
+   PRZYCISKI
+=========================== */
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+
+    background: linear-gradient(135deg,
+        #4ea8ff 0%,
+        #6b6dff 40%,
+        #9b4dff 100%
+    );
+    background-size: 220% 220%;
+
+    color: #fff;
+    transition: background-position .25s ease, transform .15s ease;
+}
+
+.btn-primary:hover {
+    background-position: 100% 0%;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    display: block;
+    margin-top: 12px;
+
+    background: #eef1f5;
+    color: #333;
+    font-weight: 600;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition: background .2s, transform .15s;
+}
+
+.btn-secondary:hover {
+    background: #dfe3ea;
+    transform: translateY(-1px);
+}
+
+/* ===========================
+   ALERTY
+=========================== */
+.alert {
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+.alert-success {
+    background: #e8f8ef;
+    color: #207c4f;
+}
+
+.alert-danger {
+    background: #fdecea;
+    color: #b72f25;
+}
+
+/* ===========================
+   RESPONSYWNOŚĆ
+=========================== */
+@media (max-width: 600px) {
+    .settings-form {
+        padding: 22px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        font-size: 14px;
+    }
+}
+

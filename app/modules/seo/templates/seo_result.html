@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block title %}Produkt. - SEO – wynik analizy{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('seo.static', filename='css/seo.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container seo-result-page">
+
+
+    <div class="settings-header">
+        <h1 class="module-name">SEO – wynik analizy</h1>
+        <p class="module-description">
+            Produkt: <strong>[{{ product.sku }}] {{ product.name }}</strong>
+        </p>
+    </div>
+
+
+    <div class="seo-score-card" data-score="{{ result.score }}">
+        <div class="seo-score-left">
+            <div class="seo-score-circle">
+                <span id="seoScoreValue">0</span>
+                <small>/100</small>
+            </div>
+        </div>
+
+        <div class="seo-score-right">
+            <h2>SEO Score</h2>
+            <p class="seo-grade">{{ result.grade }}</p>
+
+            <div class="seo-progress">
+                <div class="seo-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="seo-section">
+        <h3>Statystyki opisu</h3>
+
+        <div class="seo-stats-grid">
+            <div class="seo-stat-card">
+                <span class="label">Liczba słów</span>
+                <span class="value">{{ result.word_count }}</span>
+            </div>
+
+            <div class="seo-stat-card">
+                <span class="label">Nagłówki</span>
+                <span class="value">{{ result.headings_count }}</span>
+            </div>
+
+            <div class="seo-stat-card">
+                <span class="label">Elementy list</span>
+                <span class="value">{{ result.lists_count }}</span>
+            </div>
+
+            <div class="seo-stat-card">
+                <span class="label">Śr. dł. zdania</span>
+                <span class="value">{{ result.avg_sentence_length }}</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="seo-section">
+        <h3>Analiza słów kluczowych</h3>
+
+        <table class="seo-keyword-table">
+            <thead>
+                <tr>
+                    <th>Słowo kluczowe</th>
+                    <th>Wystąpienia</th>
+                    <th>Gęstość</th>
+                    <th>Kontekst</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for kw in result.keywords %}
+                <tr class="status-{{ kw.status }}">
+                    <td>{{ kw.keyword }}</td>
+                    <td>{{ kw.count }}</td>
+                    <td>{{ kw.density }}%</td>
+                    <td>
+                        {% if kw.in_headings %}H{% endif %}
+                        {% if kw.in_first_100 %}Top 100{% endif %}
+                        {% if not kw.in_headings and not kw.in_first_100 %}—{% endif %}
+                    </td>
+                    <td>
+                        {% if kw.status == 'good' %}
+                            <span class="badge good">OK</span>
+                        {% elif kw.status == 'warn' %}
+                            <span class="badge warn">Do poprawy</span>
+                        {% else %}
+                            <span class="badge bad">Brak</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="actions-row">
+        <a href="{{ url_for('seo.form') }}" class="btn-secondary">
+            ← Sprawdź inny opis
+        </a>
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    const card = document.querySelector('.seo-score-card');
+    const score = parseInt(card.dataset.score, 10);
+
+    const valueEl = document.getElementById('seoScoreValue');
+    const bar = document.querySelector('.seo-progress-bar');
+    const circle = document.querySelector('.seo-score-circle');
+
+    let current = 0;
+    const interval = setInterval(() => {
+        current++;
+        valueEl.textContent = current;
+        if (current >= score) clearInterval(interval);
+    }, 15);
+
+    bar.style.width = score + '%';
+
+    if (score >= 85) {
+        circle.style.borderColor = '#22c55e';
+        bar.style.background = '#22c55e';
+    } else if (score >= 65) {
+        circle.style.borderColor = '#eab308';
+        bar.style.background = '#eab308';
+    } else {
+        circle.style.borderColor = '#ef4444';
+        bar.style.background = '#ef4444';
+    }
+});
+
+
+</script>
+{% endblock %}

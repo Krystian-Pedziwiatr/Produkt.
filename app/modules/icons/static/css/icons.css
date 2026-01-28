@@ -1,0 +1,345 @@
+/* ====== KONTENER CAŁEGO MODUŁU ====== */
+.icon-creator {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: "Inter", sans-serif;
+    color: #222;
+}
+
+/* ====== NAGŁÓWEK ====== */
+.icon-creator-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.icon-creator .module-name {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1e1e1e;
+}
+
+.icon-creator .module-description {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ====== FORMULARZ ====== */
+.icon-form {
+    background: #fff;
+    padding: 30px 32px;
+    border-radius: 14px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    border: 1px solid #e6e6e6;
+}
+
+/* ====== GRUPY INPUTÓW ====== */
+.icon-creator .form-group {
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-creator label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.icon-creator input {
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s border-color, 0.2s box-shadow;
+}
+
+.icon-creator input:focus {
+    border-color: #4b91ff;
+    box-shadow: 0 0 0 3px rgba(75, 145, 255, 0.25);
+    outline: none;
+}
+
+/* ====== BUTTON ====== */
+.icon-creator .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg,
+       #4ea8ff 0%,
+       #6b6dff 45%,
+       #9b4dff 100%
+    );
+    background-size: 220% 220%;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s background;
+    margin-top: 10px;
+}
+
+.icon-creator .btn-primary:hover {
+    background-position: 100% 0%;
+}
+
+/* ====== RESPONSYWNOŚĆ ====== */
+@media (max-width: 600px) {
+    .icon-creator .module-name {
+        font-size: 26px;
+    }
+
+    .icon-form {
+        padding: 22px;
+    }
+}
+
+/* ====== KONTAINER ====== */
+.icons-manager {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 35px 20px;
+    font-family: "Inter", sans-serif;
+}
+
+.icons-manager h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+/* ====== GRID IKON ====== */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+/* ====== KAFELKI ====== */
+.icon-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 15px;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.icon-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+/* ====== IKONA ====== */
+.icon-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin: 0 auto 12px auto;
+}
+
+/* ====== NAZWA IKONY ====== */
+.icon-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+/* ====== KATEGORIA ====== */
+.icon-category {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* ====== AKCJE W KAFELKU ====== */
+.icon-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Przycisk usuń */
+.btn-delete-icon {
+    padding: 6px 12px;
+    background: #ff4c4c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-delete-icon:hover {
+    background: #d93a3a;
+}
+
+/* Przycisk edytuj */
+.btn-edit-icon {
+    padding: 6px 12px;
+    background: #4b91ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-edit-icon:hover {
+    background: #3a7be0;
+}
+
+/* ====== FILTRY KATEGORII ====== */
+.icon-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.icon-filters select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.icon-filters select:focus {
+    border-color: #4b91ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(75, 145, 255, 0.25);
+}
+
+/* ====== EDYCJA IKONY ====== */
+.icon-editor {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: "Inter", sans-serif;
+    color: #222;
+}
+
+.editor-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.icon-editor .module-name {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.icon-editor .module-description {
+    font-size: 15px;
+    color: #555;
+}
+
+/* FORMULARZ */
+.editor-form {
+    background: #fff;
+    padding: 30px 32px;
+    border-radius: 14px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    border: 1px solid #e6e6e6;
+}
+
+.icon-editor .form-group {
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-editor label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.icon-editor input {
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s border-color;
+}
+
+.icon-editor input:focus {
+    border-color: #4b91ff;
+    outline: none;
+}
+
+/* PODGLĄD IKONY */
+.icon-preview-box {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 25px auto;
+    border-radius: 12px;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.icon-preview-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* BUTTONY */
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg,
+       #4ea8ff 0%,
+       #6b6dff 45%,
+       #9b4dff 100%
+    );
+    background-size: 220% 220%;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s background;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-position: 100% 0%;
+}
+
+/* POWRÓT */
+.btn-secondary.return-btn {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    background: #e8e8e8;
+    font-size: 15px;
+    color: #222;
+    text-decoration: none;
+    transition: .2s background;
+}
+
+.btn-secondary.return-btn:hover {
+    background: #d5d5d5;
+}
+

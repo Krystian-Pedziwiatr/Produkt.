@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - Warianty produktów{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('variants.static', filename='css/variants.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="products-wrapper">
+
+    <div class="products-header">
+        <h1>Warianty produktów</h1>
+    </div>
+
+    {% if products %}
+    <table class="products-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>SKU</th>
+                <th>Liczba wariantów</th>
+                <th>Data utworzenia</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.sku }}</td>
+
+                <td>
+                    {{ p.variant_count }}
+                </td>
+
+                <td>{{ p.created_at.strftime('%Y-%m-%d') }}</td>
+
+                <td class="actions-col">
+
+                    <!-- Zarządzanie wariantami danego produktu -->
+                    <a href="{{ url_for('variants.edit_variant', product_id=p.id) }}"
+                       class="btn-small btn-edit">
+                        Zarządzaj
+                    </a>
+
+                    <!-- Dodaj nowy wariant -->
+                    <a href="{{ url_for('variants.add_variant', product_id=p.id) }}"
+                       class="btn-small btn-add">
+                        + Dodaj
+                    </a>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    {% else %}
+    <p class="no-products">Brak produktów w bazie danych. Aby dodać warianty, najpierw utwórz produkt.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

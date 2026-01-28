@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Product. - Biblioteka ikon{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('icons.static', filename='css/icons.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="icons-manager">
+
+    <h1>Biblioteka ikon</h1>
+    <p class="module-description">
+        Zarządzaj ikonami używanymi w opisach produktów. Możesz je edytować, usuwać lub filtrować według kategorii.
+    </p>
+    <h4>Filtruj według kategorii</h4>
+
+    <div class="icon-filters">
+      <select id="categoryFilter">
+        <option value="">Wszystkie kategorie</option>
+        {% for cat in categories %}
+          <option value="{{ cat }}">{{ cat }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+
+    <div class="icon-grid">
+        {% for icon in icons %}
+        <div class="icon-card" data-category="{{ icon.category }}">
+            <img src="{{ icon.url }}" alt="{{ icon.name }}">
+            <div class="icon-name">{{ icon.name }}</div>
+            <div class="icon-category">{{ icon.category or "Brak kategorii" }}</div>
+
+            <div class="icon-actions">
+                <button class="btn-edit-icon" onclick="window.location='{{ url_for('icons.edit_icon', icon_id=icon.id) }}'">Edytuj</button>
+
+                <form method="POST" action="{{ url_for('icons.delete_icon', icon_id=icon.id) }}"
+                      onsubmit="return confirm('Usunąć ikonę z bazy danych?')" style="display:inline;">
+                    <button class="btn-delete-icon" type="submit">Usuń</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const filter = document.getElementById("categoryFilter");
+    const cards = document.querySelectorAll(".icon-card");
+
+    filter.addEventListener("change", function () {
+        const selected = this.value.trim();
+
+        cards.forEach(card => {
+            const cardCategory = (card.dataset.category || "").trim();
+
+            if (selected === "" || cardCategory === selected) {
+                card.style.display = "flex";     // w stylu cardów
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+
+});
+</script>
+
+{% endblock %}

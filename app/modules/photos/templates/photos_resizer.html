@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Produkt. - Skalowanie zdjęć{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('photos.static', filename='css/photos.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+
+
+    <div class="settings-header">
+        <img src="{{ url_for('static', filename='icons/resize.svg') }}"
+             alt="Zdjęcia" style="width:10%; height:auto;">
+        <h1 class="module-name">Skalowanie zdjęć produktów</h1>
+        <p class="module-description">
+            Dodaj zdjęcia produktów i przeskaluj je zgodnie z ustawieniami, aby były gotowe do użycia w sklepie internetowym.
+        </p>
+    </div>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="mb-3">
+            {% for category, msg in messages %}
+            <div class="alert alert-{{ category }}">{{ msg }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+
+
+    <form method="POST" enctype="multipart/form-data" class="settings-form">
+
+    <h4 class="mt-3">Nazwa plików wyjściowych</h4><br>
+
+    <div class="mb-3">
+        <label class="form-label">Bazowa nazwa zdjęć</label>
+        <input
+            type="text"
+            name="base_name"
+            class="form-control"
+            required
+        >
+        <small class="form-text">
+            Jeśli wgrasz kilka zdjęć jednocześnie każde kolejne zdjęcie otrzyma prefix:
+            <code>produkt.webp</code>,
+            <code>produkt-2.webp</code>
+        </small>
+    </div>
+
+    <hr>
+
+    <h4 class="mt-3">Wybierz zdjęcia do przeskalowania</h4><br>
+
+    <div class="mb-3">
+        <label class="form-label">Pliki graficzne</label>
+        <input
+            type="file"
+            name="photos"
+            class="form-control"
+            multiple
+            accept="image/*"
+            required
+        ><br>
+        <small class="form-text">
+            Obsługiwane formaty: JPG, PNG, WEBP
+        </small>
+    </div>
+
+    <div class="actions-row mt-3" style="display:flex; gap:12px;">
+        <button type="submit" class="btn btn-primary">
+            Rozpocznij skalowanie zdjęć
+        </button>
+
+        <a href="{{ url_for('photos.settings') }}"
+           class="btn btn-secondary resize">
+            Ustawienia skalowania
+        </a>
+    </div>
+
+</form>
+
+
+
+</div>
+
+
+<script>
+function downloadSelected() {
+    const checked = document.querySelectorAll('.photo-checkbox:checked');
+
+    if (checked.length === 0) {
+        alert("Nie zaznaczono żadnych zdjęć.");
+        return;
+    }
+
+    checked.forEach(cb => {
+        const filename = cb.value;
+        const url = "{{ url_for('photos.static', filename='uploads/tmp/') }}" + filename;
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+}
+</script>
+
+{% endblock %}

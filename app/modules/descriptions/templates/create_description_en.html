@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Kreator - ShopBooster{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('descriptions.static', filename='css/create_description.css') }}">
+
+
+{% endblock %}
+
+
+
+{% block content %}
+<script src="{{ url_for('descriptions.static', filename='js/create-description.js') }}"></script>
+
+
+<h2>Przetłumacz opis produktu na język angielski</h2>
+<form method="POST" action="{{ url_for('descriptions.create_description_en', product_id=product_id if product_id else None) }}">
+  <div class="form-group">
+      <div id="editor-container" class="bootstrap-scope">
+          <script src="{{ url_for('descriptions.static', filename='jquery/jquery.min.js') }}"></script>
+          <script src="{{ url_for('descriptions.static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+          <script src="{{ url_for('descriptions.static', filename='summernote/summernote.min.js') }}"></script>
+          <link rel="stylesheet" href="{{ url_for('descriptions.static', filename='bootstrap/css/bootstrap.scoped.css') }}">
+          <link rel="stylesheet" href="{{ url_for('descriptions.static', filename='summernote/summernote.min.css') }}">
+          <textarea id="description" name="description" style="height:70vh; border:1px solid #ddd;">{{ description|default('', true)|safe }}</textarea>
+      </div>
+  </div>
+  <button type="submit" class="btn-primary">Zapisz opis</button>
+</form>
+
+
+<script>
+$(document).ready(function() {
+
+    // Inicjalizacja Summernote
+    $('#description').summernote({
+        height: 500,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['insert', ['link', 'picture']],
+            ['view', ['fullscreen', 'codeview']]
+        ]
+    });
+
+    // Pobieramy HTML z wersji PL przekazany z backendu
+    const plHTML = `{{ description_pl|safe }}`;
+
+    // Jeśli istnieje – wklejamy do edytora w wersji EN
+    if (plHTML && plHTML.trim() !== "") {
+        $('#description').summernote('code', plHTML);
+    }
+});
+
+
+</script>
+{% endblock %}
+

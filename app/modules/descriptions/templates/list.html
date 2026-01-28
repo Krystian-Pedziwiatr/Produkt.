@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - Lista produktów – ShopBooster{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('descriptions.static', filename='css/products_list.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="products-wrapper">
+
+    <div class="products-header">
+        <h1>Lista produktów</h1>
+        <a href="{{ url_for('descriptions.create_product') }}" class="btn-primary add-product-btn">
+            + Dodaj nowy produkt
+        </a>
+    </div>
+
+
+    {% if products %}
+    <table class="products-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>SKU</th>
+                <th>EAN</th>
+                <th>Liczba wariantów</th>
+                <th>Data utworzenia</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for p in products %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.sku }}</td>
+                <td>{{ p.ean or "-" }}</td>
+                <td>{{ p.variant_count}}</td>
+                <td>{{ p.created_at.strftime('%Y-%m-%d') }}</td>
+
+                <td class="actions-col">
+                    <a href="{{ url_for('descriptions.create_description', product_id=p.id) }}" class="btn-small btn-edit">
+                        Edytuj
+                    </a>
+
+                    <form action="{{ url_for('descriptions.product_delete', product_id=p.id) }}"
+                          method="POST"
+                          onsubmit="return confirm('Czy na pewno chcesz usunąć produkt?')">
+                        <button type="submit" class="btn-small btn-delete">
+                            Usuń
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    {% else %}
+    <p class="no-products">Brak produktów w bazie danych.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

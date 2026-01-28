@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Product. - Dodaj ikonę{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('icons.static', filename='css/icons.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="icon-creator">
+
+    <div class="icon-creator-header">
+        <img src="{{ url_for('static', filename='icons/new-product.svg') }}" alt="Nowa-ikona" style="width:10%; height:auto;">
+        <h1 class="module-name">Dodaj ikonę do biblioteki</h1>
+        <p class="module-description">
+            Uzupełnij dane ikony, aby można było wykorzystać ją w edytorze opisów produktów.
+        </p>
+    </div>
+
+    <form action="{{ url_for('icons.add_icon') }}" method="POST" class="icon-form">
+
+        <div class="form-group">
+            <label for="name">Nazwa ikony *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="url">Adres URL ikony *</label>
+            <input type="url" id="url" name="url" required placeholder="https://przyklad.pl/ikony/wodoodpornosc.svg">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Kategoria (opcjonalnie)</label>
+            <input type="text" id="category" name="category" placeholder="np. lamele, panele, listwy">
+        </div>
+
+        <button type="submit" class="btn-primary">Zapisz ikonę</button>
+
+    </form>
+</div>
+
+{% endblock %}

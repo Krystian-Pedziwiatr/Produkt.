@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Produkt. - Zdjęcia{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('photos.static', filename='css/photos.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="manager">
+
+    <div class="manager-header">
+        <h1 class="module-name">Biblioteka zdjęć</h1>
+        <p class="module-description">
+            Przegląd zdjęć przygotowanych i przeskalowanych w systemie.
+        </p>
+    </div>
+
+    {% if files %}
+
+
+    <div class="manager-filters">
+        <label>
+            <input type="checkbox" id="selectAllPhotos">
+            Zaznacz wszystkie
+        </label>
+    </div>
+
+
+    <div class="manager-grid">
+
+        {% for file in files %}
+        <div class="card card--photo">
+
+            <label>
+                <input
+                    type="checkbox"
+                    class="photo-checkbox"
+                    value="{{ file }}"
+                >
+            </label>
+
+            <img
+                src="{{ url_for('photos.static', filename='uploads/resized/' ~ file) }}"
+                alt="{{ file }}"
+            >
+
+            <div class="card-title">{{ file }}</div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="manager-actions">
+        <button type="button"
+                class="btn-primary photo-list"
+                onclick="downloadSelected()">
+            Pobierz zaznaczone
+        </button>
+
+        <a href="{{ url_for('photos.resize') }}"
+           class="btn-secondary photo-list">
+            Skaluj kolejne zdjęcia
+        </a>
+    </div>
+
+    {% else %}
+
+
+    <div class="empty-state">
+        <p class="empty-title">
+            Nie znaleziono przeskalowanych zdjęć
+        </p>
+        <p class="empty-desc">
+            Aby zobaczyć zdjęcia w bibliotece, dodaj pliki i uruchom proces skalowania.
+        </p>
+        <br>
+        <a href="{{ url_for('photos.resize') }}" class="btn-primary">
+            Przejdź do skalowania zdjęć
+        </a>
+    </div>
+
+    {% endif %}
+
+</div>
+
+<!-- JS -->
+<script>
+function downloadSelected() {
+    const checked = document.querySelectorAll('.photo-checkbox:checked');
+
+    if (checked.length === 0) {
+        alert("Nie zaznaczono żadnych zdjęć.");
+        return;
+    }
+
+    checked.forEach(cb => {
+        const filename = cb.value;
+        const url = "{{ url_for('photos.static', filename='uploads/resized/') }}" + filename;
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+}
+
+// SELECT ALL
+document.addEventListener("DOMContentLoaded", () => {
+    const selectAll = document.getElementById("selectAllPhotos");
+    const boxes = document.querySelectorAll(".photo-checkbox");
+
+    if (!selectAll) return;
+
+    selectAll.addEventListener("change", () => {
+        boxes.forEach(cb => cb.checked = selectAll.checked);
+    });
+
+    boxes.forEach(cb => {
+        cb.addEventListener("change", () => {
+            selectAll.checked = [...boxes].every(c => c.checked);
+        });
+    });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Produkt. - Integracje – API{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="manager">
+
+
+
+    <div class="empty-state">
+
+        <img src="{{ url_for('static', filename='icons/build.svg') }}" alt="Warianty" style="width:10%; height:auto;">
+        <br>
+        <h1 class="empty-title">
+            API aplikacji
+        </h1>
+        <p class="empty-desc">
+            Interfejs API stanowi zaplanowane rozszerzenie systemu, umożliwiające integrację z zewnętrznymi usługami.<br>
+            Funkcjonalność nie została jeszcze zaimplementowana.
+        </p>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

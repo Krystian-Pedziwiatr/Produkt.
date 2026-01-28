@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% block title %}Produkt. - Edytuj wariant produktu{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+
+    <div class="settings-header">
+        <img src="{{ url_for('static', filename='icons/variants.svg') }}" alt="Warianty" style="width:10%; height:auto;">
+        <h1 class="module-name">Edytuj wariant produktu </h1>
+        <p class="module-description">
+            Wybierz i popraw linki wariantu produktu.
+        </p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="mb-3">
+            {% for category, msg in messages %}
+            <div class="alert alert-{{ category }}">{{ msg }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="settings-form">
+
+        <h4 class="mt-3">Wybierz wariant poruduktu który chcesz edytować</h4><br>
+
+        <div class="form-group">
+            <select id="variantSelect" class="form-control">
+            <option value="">Wybierz wariant</option>
+            {% for v in variants %}
+                <option value="{{ v.id }}">{{ v.color }}</option>
+            {% endfor %}
+            </select>
+
+        </div>
+        <hr>
+        <br>
+        <h4 class="mt-3">Edytuj interesujące cię linki do zdjęć wybranego wariantu</h4><br>
+
+        <div class="mb-3">
+            <label class="form-label">Link 1</label>
+            <input id="image_url" name="image_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 2</label>
+            <input id="image2_url" name="image2_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 3</label>
+            <input id="image3_url" name="image3_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 4</label>
+            <input id="image4_url" name="image4_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 5</label>
+            <input id="image5_url" name="image5_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 6</label>
+            <input id="image6_url" name="image6_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 7</label>
+            <input id="image7_url" name="image7_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 8</label>
+            <input id="image8_url" name="image8_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 9</label>
+            <input id="image9_url" name="image9_url" type="text">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 10</label>
+            <input id="image10_url" name="image10_url" type="text">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h4 class="mt-3">Edytuj interesujące cię linki dodatkowe</h4>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Link 1</label>
+            <input type="url" id="link_url" name="link_url">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 2</label>
+            <input type="url" id="link2_url" name="link2_url">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 3</label>
+            <input type="url" id="link3_url" name="link3_url">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 4</label>
+            <input type="url" id="link4_url" name="link4_url">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Link 5</label>
+            <input type="url" id="link5_url" name="link5_url">
+        </div>
+
+
+        <button type="submit" class="btn-primary">Aktualizuj wariant</button>
+
+        <a href="{{ url_for('variants.variants_products_list') }}"
+           class="btn-secondary">Powrót</a>
+    <input type="hidden" name="variant_id" id="variant_id">
+
+    </form>
+</div>
+<script>
+document.getElementById("variantSelect").addEventListener("change", function () {
+    const variantId = this.value;
+    if (!variantId) return;
+
+    // zapisz variant_id do POST
+    document.getElementById("variant_id").value = variantId;
+
+    fetch(`/variants/variant/${variantId}/json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Błąd pobierania danych wariantu");
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            // ===== ZDJĘCIA =====
+            Object.entries(data.images).forEach(([key, value]) => {
+                const input = document.getElementById(key);
+                if (input) {
+                    input.value = value || "";
+                }
+            });
+
+            // ===== LINKI =====
+            Object.entries(data.links).forEach(([key, value]) => {
+                const input = document.getElementById(key);
+                if (input) {
+                    input.value = value || "";
+                }
+            });
+
+        })
+        .catch(error => {
+            console.error(error);
+            alert("Nie udało się pobrać danych wariantu.");
+        });
+});
+</script>
+
+{% endblock %}

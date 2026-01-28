@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Produkt. - SEO{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('seo.static', filename='css/seo.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+
+    <div class="settings-header">
+        <img src="{{ url_for('static', filename='icons/seo-form.svg') }}" alt="SEO" style="width:10%; height:auto;">
+        <h1 class="module-name">Analiza SEO opisu produktu</h1>
+        <p class="module-description">
+            Wybierz produkt i przeanalizuj jego opis pod kątem struktury oraz obecności słów kluczowych istotnych dla SEO.
+        </p>
+    </div>
+
+    <form method="POST"
+          action="{{ url_for('seo.check') }}"
+          class="settings-form seo-form">
+
+
+        <div class="seo-section">
+            <h3>Wybór opisu produktu</h3>
+
+            <div class="form-group">
+                <label>Opis produktu *</label>
+                <select name="product_id" class="form-control" required>
+                    <option value="">— wybierz opis produktu —</option>
+                    {% for product in products %}
+                        <option value="{{ product.id }}"
+                            {% if selected_product and selected_product.id == product.id %}selected{% endif %}>
+                            [{{ product.sku }}] {{ product.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </div>
+
+
+        <div class="seo-section">
+            <h3>Słowa kluczowe do analizy</h3>
+
+            <div class="form-group">
+                <label>Słowa kluczowe *</label>
+                <textarea name="keywords"
+                          class="form-control"
+                          rows="4"
+                          placeholder="np. iphone 13, smartfon Apple, telefon 5G"
+                          required></textarea>
+
+                <small class="form-text">
+                    Oddziel frazy przecinkami lub wpisz każdą w nowej linii.
+                </small>
+            </div>
+        </div>
+        <hr>
+        <!-- OPTIONS -->
+        <div class="seo-section">
+            <h3>Opcje analizy</h3>
+
+            <div class="seo-options">
+                <label class="seo-checkbox">
+                    <input type="checkbox" name="check_headings" checked>
+                    <span>Analizuj strukturę nagłówków (H1–H3)</span>
+                </label>
+
+                <label class="seo-checkbox">
+                    <input type="checkbox" name="check_lists" checked>
+                    <span>Sprawdzaj występowanie list (ul / li)</span>
+                </label>
+
+                <label class="seo-checkbox">
+                    <input type="checkbox" name="check_first_words" checked>
+                    <span>Sprawdź słowa kluczowe w pierwszych 100 słowach</span>
+                </label>
+            </div>
+        </div>
+
+
+        <div class="actions-row">
+            <button type="submit" class="btn-primary">
+                Rozpocznij analizę SEO
+            </button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - Panel główny{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<main class="main-content">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Witaj, {{ current_user.username }}!</h1>
+            <p>Opisy produktów to jeden z kluczowych elementów sprzedaży online. W&nbsp;Produkt. możesz tworzyć nowe treści lub edytować istniejące&nbsp;—&nbsp;wybierz więc kierunek dalszej pracy.</p>
+
+            <a href="{{ url_for('descriptions.action_select') }}" class="hero-btn">
+                Rozpocznij
+            </a>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <h2>Główne moduły aplikacji</h2>
+
+        <div class="features-grid">
+
+            <div class="feature-box">
+                <img src="{{ url_for('static', filename='icons/edit.svg') }}" alt="Edytor">
+                <h3>Edytor blokowy opisu</h3>
+                <p>Twórz opisy produktów w oparciu o modułowy edytor blokowy.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="{{ url_for('static', filename='icons/photo-edit.svg') }}" alt="Resizer">
+                <h3>Skalowanie zdjęć</h3>
+                <p>Automatyczne skalowanie zdjęć zgodnie z wymaganiami platformy sklepowej.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="{{ url_for('static', filename='icons/variants.svg') }}" alt="Warianty">
+                <h3>Generator wariantów</h3>
+                <p>Generowanie wariantów opisów produktów na podstawie zdefiniowanych parametrów.</p>
+            </div>
+
+            <div class="feature-box">
+                <img src="{{ url_for('static', filename='icons/export.svg') }}" alt="Export">
+                <h3>Eksport HTML</h3>
+                <p>Eksport gotowych opisów do kodu HTML zgodnego z panelem sklepu.</p>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+{% endblock %}

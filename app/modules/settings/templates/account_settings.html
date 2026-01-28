@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - Ustawienia konta{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('settings.static', filename='css/shop_settings.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+
+    <div class="settings-header mb-3">
+        <img src="{{ url_for('static', filename='icons/user.svg') }}" alt="uzytkownik" style="width:10%; height:auto;">
+        <h1 class="module-name">Ustawienia konta</h1>
+        <p class="module-description">
+            Zarządzaj danymi konta oraz ustawieniami bezpieczeństwa.
+        </p>
+    </div>
+
+
+
+    <form action="{{ url_for('settings.account_settings') }}" method="POST" class="settings-form">
+
+        <div class="settings-card mb-4">
+            <h3>Dane konta użytkownika</h3>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Nazwa użytkownika</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="form-control"
+                    value="{{ current_user.username }}"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Adres e-mail</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    value="{{ current_user.email }}"
+                    disabled
+                >
+                <div class="form-text mt-1">
+                    Adres e-mail jest przypisany do konta i nie podlega edycji.
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Zapisz dane konta</button>
+        </div>
+    </form>
+    <br>
+
+
+    <form action="{{ url_for('settings.change_password') }}" method="POST" class="settings-form mt-4">
+
+        <div class="settings-card">
+            <h3>Zmiana hasła</h3>
+
+            <div class="mb-3">
+                <label for="current_password" class="form-label">Obecne hasło</label>
+                <input
+                    type="password"
+                    id="current_password"
+                    name="current_password"
+                    class="form-control"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="new_password" class="form-label">Nowe hasło</label>
+                <input
+                    type="password"
+                    id="new_password"
+                    name="new_password"
+                    class="form-control"
+                    required
+                >
+            <small class="form-text d-block mt-1">
+                Hasło powinno zawierać co najmniej 8 znaków.
+            </small>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Powtórz nowe hasło</label>
+                <input
+                    type="password"
+                    id="confirm_password"
+                    name="confirm_password"
+                    class="form-control"
+                    required
+                >
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">
+                Zmień hasło
+            </button>
+        </div>
+
+    </form>
+
+    <br>
+
+<form action="{{ url_for('settings.delete_account') }}" method="POST" class="settings-form mt-5">
+
+    <div class="settings-card settings-card--danger">
+        <h3>Usuń konto</h3>
+
+        <p class="form-text mb-3">
+            Usunięcie konta jest nieodwracalne. Wszystkie dane zostaną trwale usunięte.
+        </p>
+
+        <div class="mb-3">
+            <label for="delete_password" class="form-label">
+                Wprowadź aktualne hasło, aby potwierdzić usunięcie konta.
+            </label>
+            <input
+                type="password"
+                id="delete_password"
+                name="password"
+                class="form-control"
+                required
+            >
+        </div>
+        <br>
+        <button
+            type="submit"
+            class="btn btn-primary delete"
+            onclick="return confirm('Czy na pewno chcesz usunąć konto? Tej operacji nie można cofnąć.')">
+            Usuń konto
+        </button>
+    </div>
+
+</form>
+
+
+</div>
+{% endblock %}

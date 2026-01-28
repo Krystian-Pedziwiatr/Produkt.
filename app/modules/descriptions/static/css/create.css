@@ -1,0 +1,96 @@
+/* ====== KONTENER CAŁEGO MODUŁU ====== */
+.product-creator {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: "Inter", sans-serif;
+    color: #222;
+}
+
+/* ====== NAGŁÓWEK ====== */
+.creator-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-creator .module-name {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1e1e1e;
+}
+
+.product-creator .module-description {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ====== FORMULARZ ====== */
+.creator-form {
+    background: #fff;
+    padding: 30px 32px;
+    border-radius: 14px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    border: 1px solid #e6e6e6;
+}
+
+/* ====== GRUPY INPUTÓW ====== */
+.product-creator .form-group {
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-creator label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.product-creator input {
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.2s border-color;
+}
+
+.product-creator input:focus {
+    border-color: #4b91ff;
+    outline: none;
+}
+
+/* ====== BUTTON ====== */
+.product-creator .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg,
+        #4ea8ff 0%,
+        #6b6dff 45%,
+        #9b4dff 100%
+    );
+    background-size: 220% 220%;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s background;
+    margin-top: 10px;
+}
+
+.product-creator .btn-primary:hover {
+    background-position: 100% 0%;
+}
+
+/* ====== RESPONSYWNOŚĆ ====== */
+@media (max-width: 600px) {
+    .product-creator .module-name {
+        font-size: 26px;
+    }
+
+    .creator-form {
+        padding: 22px;
+    }
+}

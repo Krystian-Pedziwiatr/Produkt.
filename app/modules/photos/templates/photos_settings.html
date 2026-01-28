@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block title %}Produkt. - Ustawienia zdjęć{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('photos.static', filename='css/photos.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+
+    <div class="settings-header">
+        <img src="{{ url_for('static', filename='icons/photo-edit.svg') }}" alt="Warianty" style="width:10%; height:auto;">
+        <h1 class="module-name">Ustawienia zdjęć produktów</h1>
+        <p class="module-description">
+            Skonfiguruj parametry skalowania i jakości zdjęć zgodnie z wymaganiami platformy sklepowej.
+        </p>
+    </div>
+
+
+    <form method="POST" class="settings-form">
+
+        <h4 class="mt-3">Wymiary zdjęcia</h4><br>
+
+        <div class="mb-3">
+            <label class="form-label">Szerokość (px)</label>
+            <input id="width" name="width" type="text" value="{{ width }}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Wysokość (px)</label>
+            <input id="height" name="height" type="text" value="{{ height }}" class="form-control">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input
+                type="checkbox"
+                class="form-check-input"
+                id="keep_ratio"
+                name="keep_ratio"
+                {% if keep_ratio %}checked{% endif %}
+            >
+            <label class="form-check-label" for="keep_ratio">
+                Zachowaj proporcje obrazu
+            </label>
+            <small class="form-text">
+                (Po włączeniu zdjęcie zostanie przeskalowane bez zniekształceń.)
+            </small>
+        </div>
+        <hr>
+        <h4 class="mt-3">Rozmiar i jakość pliku</h4><br>
+        <div class="mb-3">
+            <label class="form-label">Maksymalny rozmiar pliku (kB)</label>
+            <input id="max_size_kb" name="max_size_kb" type="text" value="{{ max_size_kb }}" class="form-control">
+            <small class="form-text">
+                Zdjęcie zostanie skompresowane, aby nie przekroczyć wskazanego rozmiaru.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Jakość kompresji (60-90%)</label>
+            <input id="quality" name="quality" type="text" value="{{ quality }}" class="form-control">
+        </div>
+         <hr>
+        <h4 class="mt-3">Format wyjściowy zdjęć</h4><br>
+        <div class="form-group">
+            <label for="image_format" class="form-label">Wybierz format zapisu przeskalowanych zdjęć.</label><br>
+            <select
+                id="image_format"
+                name="image_format"
+                class="form-control"
+            >
+                <option value="webp" {% if image_format == "webp" %}selected{% endif %}>
+                    WEBP (najlepsza wydajność)
+                </option>
+                <option value="jpg" {% if image_format == "jpg" %}selected{% endif %}>
+                    JPG (standard)
+                </option>
+                <option value="png" {% if image_format == "png" %}selected{% endif %}>
+                    PNG (przezroczystość)
+                </option>
+            </select>
+        </div>
+
+            <div class="mb-3 form-check">
+            <input
+                type="checkbox"
+                class="form-check-input"
+                id="keep_extension"
+                name="keep_extension"
+                {% if keep_extension %}checked{% endif %}
+            >
+            <label class="form-check-label" for="keep_extension">
+                Zachowaj oryginalne rozszerzenie pliku
+            </label>
+            </div>
+        <br>
+        <button type="submit" class="btn-primary">Zapisz ustawienia</button>
+
+    </form>
+    <br><br>
+
+
+    <div class="settings-form">
+    <h4 class="mt-4">Zarządzanie plikami</h4>
+    <p class="form-text mb-3">
+        Operacje porządkowe dla plików wygenerowanych w procesie skalowania.
+    </p>
+    <br>
+
+
+        <form
+            method="POST"
+            action="{{ url_for('photos.clear_resized') }}"
+            onsubmit="return confirm('Czy na pewno chcesz usunąć wszystkie przeskalowane zdjęcia?');"
+            class="mb-3"
+        >
+            <button type="submit" class="btn-primary delete">
+                Usuń wszystkie przeskalowane zdjęcia
+            </button>
+
+            <small class="form-text d-block mt-1">
+                Usuwa wszystkie pliki wygenerowane w procesie skalowania.
+            </small>
+        </form>
+        <br>
+
+        <form
+            method="POST"
+            action="{{ url_for('photos.clear_tmp') }}"
+            onsubmit="return confirm('Czy na pewno chcesz usunąć wszystkie pliki tymczasowe?');"
+        >
+            <button type="submit" class="btn-primary delete">
+                Usuń pliki tymczasowe
+            </button>
+
+            <small class="form-text d-block mt-1">
+                Czyści katalog plików tymczasowych wykorzystywanych podczas przetwarzania zdjęć.
+            </small>
+        </form>
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}

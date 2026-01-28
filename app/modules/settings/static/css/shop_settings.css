@@ -1,0 +1,23 @@
+
+.btn-primary.delete {
+    background: #E74C3C;
+}
+
+.btn-primary.delete:hover {
+    background: #D93A3A;
+}
+
+.btn-primary.delete:active {
+    background: #C53030;
+}
+
+/* ====== RESPONSYWNOŚĆ ====== */
+@media (max-width: 600px) {
+    .settings-header .module-name {
+        font-size: 26px;
+    }
+
+    .settings-form {
+        padding: 22px;
+    }
+}

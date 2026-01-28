@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ShopBooster{% endblock %}</title>
+
+    <!-- Globalne style dashboardu -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+
+{% if not (request.endpoint == 'login' or request.endpoint == 'register') %}
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="{{ url_for('main.dashboard') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo-new-small.svg') }}" alt="ShopBooster Logo"
+                     style="height:40px; vertical-align: middle;">
+            </a>
+
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('main.logout') }}" class="logout-icon" title="Wyloguj">
+                <img src="{{ url_for('static', filename='images/off-icon.svg') }}" alt="Wyloguj">
+            </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+
+                <li><a href="{{ url_for('main.dashboard') }}" class="sidebar-link">Strona główna</a></li>
+
+                <li class="has-submenu">
+                    <a href="#" class="sidebar-link submenu-toggle">Produkty</a>
+                    <ul class="submenu">
+                        <li><a href="{{ url_for('descriptions.product_list') }}">Lista produktów</a></li>
+                        <li><a href="{{ url_for('descriptions.create_product') }}">Dodaj produkt</a></li>
+                        <li><a href="{{ url_for('variants.variants_products_list') }}">Warianty produktu</a></li>
+                        <li><a href="{{ url_for('descriptions_export.export_products') }}">Eksport opisów</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="#" class="sidebar-link submenu-toggle">Zdjęcia</a>
+                    <ul class="submenu">
+                        <li><a href="{{ url_for('photos.list_photos') }}">Lista zdjęć</a></li>
+                        <li><a href="{{ url_for('photos.resize') }}">Resizer</a></li>
+                        <li><a href="{{ url_for('photos.settings') }}">Ustawienia</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="#" class="sidebar-link submenu-toggle">Ikony</a>
+                    <ul class="submenu">
+                        <li><a href="{{ url_for('icons.add_icon') }}">Dodaj ikonę</a></li>
+                        <li><a href="{{ url_for('icons.manage') }}">Biblioteka ikon</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="{{ url_for('seo.form') }}" class="sidebar-link">SEO</a></li>
+
+                <li class="has-submenu">
+                    <a href="#" class="sidebar-link submenu-toggle">Integracje</a>
+                    <ul class="submenu">
+                        <li><a href="{{ url_for('integrations.api') }}">API</a></li>
+                        <li><a href="{{ url_for('integrations.import_export') }}">Import/Export</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-submenu">
+                    <a href="#" class="sidebar-link submenu-toggle">Ustawienia</a>
+                    <ul class="submenu">
+                        <li><a href="{{ url_for('settings.account_settings') }}">Konto</a></li>
+                        <li><a href="{{ url_for('settings.shop_settings') }}">Sklep</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- CONTENT -->
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+
+    </div>  <!-- END dashboard-wrapper -->
+
+{% endif %}
+
+<!-- FLASH MESSAGES -->
+<div id="flash-container">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash flash-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+
+<!-- SUBMENU LOGIC -->
+<script>
+document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+    toggle.addEventListener('click', e => {
+        e.preventDefault();
+
+        document.querySelectorAll('.submenu-toggle.active').forEach(activeToggle => {
+            if (activeToggle !== toggle) {
+                activeToggle.classList.remove('active');
+                activeToggle.nextElementSibling.style.display = 'none';
+            }
+        });
+
+        toggle.classList.toggle('active');
+
+        const submenu = toggle.nextElementSibling;
+        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
+
+    function showFlash(message, category = "success") {
+  const container = document.getElementById("flash-container");
+  if (!container) return;
+
+  const flash = document.createElement("div");
+  flash.classList.add("flash", `flash-${category}`);
+  flash.textContent = message;
+
+  container.appendChild(flash);
+
+  // Animacja znikania po 3 sekundach
+  setTimeout(() => {
+    flash.style.transition = "opacity 0.5s ease";
+    flash.style.opacity = "0";
+    setTimeout(() => flash.remove(), 500);
+  }, 3000);
+}
+
+</script>
+
+</body>
+</html>

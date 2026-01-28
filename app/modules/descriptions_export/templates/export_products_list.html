@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Eksport opisów – Wybierz produkt{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('descriptions_export.static', filename='css/export.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="export-wrapper">
+
+    <div class="export-header">
+        <img src="{{ url_for('static', filename='icons/export.svg') }}" alt="Nowy-produkt" style="width:7%; height:auto;">
+        <h1 class="module-name">Eksport opisów</h1>
+        <p class="module-description">
+            Wybierz produkt dla którego chcesz wyeksportować opis.
+        </p>
+    </div>
+    <table class="export-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>SKU</th>
+                <th>Warianty</th>
+                <th>Akcja</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for p in products %}
+                <tr>
+                    <td>{{ p.id }}</td>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.sku }}</td>
+                    <td>{{ p.variant_count }}</td>
+                    <td>
+                        <a class="btn-small btn-primary"
+                           href="{{ url_for('descriptions_export.product_variants', product_id=p.id) }}">
+                            Wybierz
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">
+                        <p>Brak produktów w bazie danych.</p>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+</div>
+{% endblock %}

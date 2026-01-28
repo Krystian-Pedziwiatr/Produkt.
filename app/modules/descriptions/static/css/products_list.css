@@ -1,0 +1,133 @@
+/* =============================================
+   PRODUCTS WRAPPER
+============================================= */
+
+.products-wrapper {
+    padding: 26px 18px;
+    font-family: "Inter", sans-serif;
+    color: #222;
+}
+
+/* Header: tytuł + przycisk */
+.products-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.add-product-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff !important;
+    background: black;
+    background-size: 200% 200%;
+    transition: background-position .4s ease, transform .2s ease;
+}
+
+
+.add-product-btn:hover {
+    background-position: 100% 0%;
+    transform: translateY(-2px);
+}
+
+
+/* =============================================
+   PREMIUM TABLE
+============================================= */
+
+.products-table {
+    width: 100%;
+    border-collapse: separate;            /* pozwala na zaokrąglenia */
+    border-spacing: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+/* Nagłówki */
+.products-table thead {
+    background: rgba(34,40,46,0.85);
+    color: white;
+}
+
+.products-table th {
+    padding: 16px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Komórki */
+.products-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+.products-table tr:hover td {
+    background: #f7f9fc;
+}
+
+
+/* =============================================
+   ACTION BUTTONS (Edytuj / Usuń)
+============================================= */
+
+.actions-col {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-small {
+    display: inline-block;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+
+    border: none;
+    color: #fff !important;
+    text-decoration: none;
+
+    transition: background .25s ease, transform .2s ease;
+}
+
+.btn-small:hover {
+    transform: translateY(-2px);
+}
+
+/* Button: Edytuj (gradient premium) */
+.btn-edit {
+    background: #5B7CFF;
+    background-size: 250% 250%;
+}
+
+.btn-edit:hover {
+    background-position: 100% 0%;
+}
+
+/* Button: Usuń */
+.btn-delete {
+    background: linear-gradient(135deg, #ff5f5f, #c0392b);
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #ff7777, #b02e26);
+}
+
+.btn-primary {
+    width: auto;
+}
+

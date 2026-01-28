@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - Ustawienia sklepu{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('settings.static', filename='css/shop_settings.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+    <div class="settings-header mb-3">
+        <img src="{{ url_for('static', filename='icons/shop.svg') }}" alt="ustawienia" style="width:10%; height:auto;">
+        <h1 class="module-name">Ustawienia sklepu</h1>
+        <p class="module-description">
+            Tutaj możesz skonfigurować globalne ustawienia aplikacji, w tym adres bazowy wykorzystywany do generowania linków do zdjęć wariantów.
+        </p>
+    </div>
+
+    {# flash messages #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="mb-3">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ 'danger' if category == 'danger' else (category if category in ['success','warning','info'] else 'info') }}" role="alert">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('settings.shop_settings') }}" method="POST" class="settings-form">
+        <div class="mb-3">
+            <label for="base_url" class="form-label">Adres bazowy (BASE URL) dla zdjęć wariantów *</label>
+            <input
+                type="text"
+                id="base_url"
+                name="base_url"
+                class="form-control"
+                value="{{ base_url }}"
+                placeholder="https://twojsklep.pl/media/produkty"
+                required
+            >
+            <div class="form-text mt-1">
+                Podaj adres bazowy wykorzystywany jako prefiks dla linków do zdjęć wariantów generowanych przez system.
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Zapisz ustawienia</button>
+            <a href="{{ url_for('settings.shop_settings') }}" class="btn btn-secondary">Anuluj zmiany</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

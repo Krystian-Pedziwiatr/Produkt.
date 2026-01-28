@@ -1,0 +1,136 @@
+/* ============================================
+   LISTA PRODUKTÓW – PREMIUM UI
+============================================ */
+
+.products-wrapper {
+    padding: 25px 15px;
+    font-family: "Inter", sans-serif;
+    color: #1d1f24;
+}
+
+/* Header + przycisk */
+.products-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.add-product-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+
+    background: linear-gradient(135deg,
+        #4ea8ff 0%,
+        #6b6dff 45%,
+        #9b4dff 100%
+    );
+    background-size: 220% 220%;
+    transition: 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.add-product-btn:hover {
+    background-position: 100% 0%;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   TABELA
+============================================ */
+
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    background: rgba(255,255,255,0.90);
+    backdrop-filter: blur(6px);
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Nagłówki */
+.products-table thead {
+    background: rgba(34,40,46,0.85);
+    color: white;
+}
+
+.products-table th {
+    padding: 16px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Komórki */
+.products-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+.products-table tr:hover td {
+    background: #f7f9fc;
+}
+
+/* ============================================
+   AKCJE
+============================================ */
+
+.actions-col {
+    display: flex;
+    gap: 10px;
+}
+
+/* Podstawowy wygląd małych przycisków */
+.btn-small {
+    padding: 7px 13px;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+/* EDIT – gradient premium */
+.btn-edit {
+    background: #5B7CFF;
+    background-size: 200% 200%;
+    color: #fff !important;
+}
+
+
+.btn-add {
+    background: black;
+    background-size: 200% 200%;
+    color: #fff !important;
+}
+
+.btn-edit:hover {
+    transform: translateY(-2px);
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+}
+
+/* DELETE */
+.btn-delete {
+    background: #e74c3c;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+

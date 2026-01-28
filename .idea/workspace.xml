@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2296607c-10b0-4625-a3f9-9970083a0e10" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ShopBooster.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/bootstrap/css/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/action_select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/create.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/create_description.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/products_list.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/jquery/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/js/create-description.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/js/editor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/akcesoria.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/dodatkowe-atrybuty.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/informacje-dodatkowe.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/montaz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/short-lead.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/szczegolowy-opis.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/zastosowanie.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/action_select.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/create_description.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/create_description_en.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/variants.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/static/css/export.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/templates/export_products_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/templates/export_variants_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/icons/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/icons/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/icons/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/icons/static/css/icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/icons/templates/add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/icons/templates/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/icons/templates/manage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/integrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/integrations/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/integrations/templates/import_export.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/integrations/templates/integrations_api.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/photos/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/photos/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/photos/static/css/photos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/photos/templates/photos_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/photos/templates/photos_resizer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/photos/templates/photos_settings.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/seo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/seo/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/seo/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/seo/static/css/seo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/seo/templates/seo_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/seo/templates/seo_result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/settings/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/settings/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/settings/static/css/shop_settings.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/settings/templates/account_settings.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/settings/templates/shop_settings.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/variants/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/variants/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/variants/static/css/variants.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/variants/static/css/variants_add.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/variants/templates/variants_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/variants/templates/variants_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/modules/variants/templates/variants_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/auth_base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/dashboard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/register.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="bc0d418f-661e-4f3a-b0f1-4732db672e84" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="35LRhx6JH2tru73xcU84yEGHNT1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.routes.executor": "Run",
+    "Python.shopbooster.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/krystian/PycharmProjects/ShopBooster/app/modules/photos/templates",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/modules/photos/templates" />
+      <recent name="$PROJECT_DIR$/app/modules/descriptions/templates" />
+      <recent name="$PROJECT_DIR$/app/modules/products/static/css" />
+      <recent name="$PROJECT_DIR$/app/modules/products/templates" />
+      <recent name="$PROJECT_DIR$/app/modules/products/static/ckeditor" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/modules/photos/static" />
+      <recent name="$PROJECT_DIR$/app/modules/descriptions_export/static/css" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/modules/descriptions/static/bootstrap/css" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="shopbooster" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ShopBooster" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopbooster.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.shopbooster" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2296607c-10b0-4625-a3f9-9970083a0e10" name="Changes" comment="" />
+      <created>1762887487824</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762887487824</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

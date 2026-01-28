@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - wybór akcji{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('descriptions.static', filename='css/action_select.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2 class="action-title">Wybierz sposób dalszej pracy z opisami</h2>
+
+<div class="features-grid">
+
+    <a href="{{ url_for('descriptions.product_list') }}" class="feature-box">
+        <img src="{{ url_for('static', filename='icons/edit.svg') }}" alt="Edytor">
+        <h3>Edytuj</h3>
+        <p>Wprowadź zmiany, zaktualizuj treść lub popraw istniejący opis produktu.</p>
+    </a>
+
+    <a href="{{ url_for('descriptions.create_product') }}" class="feature-box">
+        <img src="{{ url_for('static', filename='icons/create.svg') }}" alt="Resizer">
+        <h3>Stwórz</h3>
+        <p>Rozpocznij tworzenie opisu produktu od podstaw, korzystając z edytora blokowego.</p>
+    </a>
+
+
+</div>
+
+{% endblock %}
+
+
+

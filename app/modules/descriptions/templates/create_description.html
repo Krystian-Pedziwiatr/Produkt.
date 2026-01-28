@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% block title %}Produkt. - Kreator opisu{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('descriptions.static', filename='css/create_description.css') }}">
+
+
+{% endblock %}
+
+
+
+{% block content %}
+<script src="{{ url_for('descriptions.static', filename='js/create-description.js') }}"></script>
+
+<h1>Kreator opisu</h1>
+<p>Wybieraj kolejno sekcje, które mają pojawić się w opisie produktu. Każdy dodany blok możesz później edytować, rozwijać lub całkowicie przeprojektować — tak, aby finalny opis idealnie pasował do Twojej oferty.</p>
+<h2>Dostępne moduły treści</h2>
+
+<div class="carousel-outer">
+    <button id="prevBtn" class="carousel-btn">‹</button>
+    <button id="nextBtn" class="carousel-btn">›</button>
+<div class="carousel-wrapper">
+<div class="features-grid">
+
+    <div class="feature-box" data-template-file="sekcja-otwierajaca-video.html">
+        <h3>Blok wprowadzający z filmem</h3>
+        <p>Krótki wstęp do produktu obok wideo przedstawiające produkt.</p>
+    </div>
+    <div class="feature-box" data-template-file="kafelki.html">
+        <h3>Kafelki</h3>
+        <p>Kluczowe funkcje i zalety produktu w formie kafelków.</p>
+    </div>
+    <div class="feature-box" data-template-file="wlasciwosci.html">
+        <h3>Właściwości</h3>
+        <p>Opis właściwości produktu.</p>
+    </div>
+    <div class="feature-box" data-template-file="szczegolowy-opis.html">
+        <h3>Szczegółowy opis produktu</h3>
+        <p>Rozwinięcie informacji o produkcie.</p>
+    </div>
+        <div class="feature-box" data-template-file="specyfikacja.html">
+        <h3>Specyfikacja techniczna</h3>
+        <p>Dokładne dane: wymiary, waga, materiały, kompatybilność.</p>
+    </div>
+    <div class="feature-box" data-template-file="zastosowanie.html">
+        <h3>Zastosowanie i korzyści</h3>
+        <p>W jakich sytuacjach produkt sprawdzi się najlepiej i jakie problemy rozwiązuje.</p>
+    </div>    <div class="feature-box" data-template-file="akcesoria.html">
+        <h3>Akcesoria i produkty powiązane</h3>
+        <p>Sugestie dotyczące dodatków lub innych produktów, które można dokupić.</p>
+    </div>
+    <div class="feature-box" data-template-file="montaz.html">
+        <h3>Instrukcja montażu / użytkowania</h3>
+        <p>Jasne, proste wskazówki dotyczące instalacji lub obsługi produktu.</p>
+    </div>
+    <div class="feature-box" data-template-file="informacje-dodatkowe.html">
+        <h3>Informacje dodatkowe</h3>
+        <p>Certyfikaty, gwarancje, zasady zwrotów i inne ważne dane.</p>
+    </div>
+    <div class="feature-box" data-template-file="sekcja-cross-selling.html">
+        <h3>Cross-selling – produkty polecane</h3>
+        <p>Blok, który prezentuje powiązane produkty lub akcesoria.</p>
+    </div>
+
+
+</div>
+</div>
+</div>
+
+<h2>Dopasuj ikony do treści opisu</h2>
+<p>Zaznacz ikonę w wybranym bloku, a następnie wybierz nową z listy poniżej, aby dopasować ją do treści.</p>
+
+<div class="carousel-outer icon-carousel-outer">
+    <button id="iconPrevBtn" class="carousel-btn prev">‹</button>
+
+    <div class="carousel-wrapper icon-carousel-wrapper">
+        <div id="icon-picker" class="icon-picker-grid">
+        </div>
+    </div>
+
+    <button id="iconNextBtn" class="carousel-btn next">›</button>
+</div>
+
+
+<h2>Podgląd i dostosowanie opisu</h2>
+<form method="POST" action="{{ url_for('descriptions.create_description', product_id=product_id if product_id else None) }}">
+  <div class="form-group">
+      <div id="editor-container" class="bootstrap-scope">
+          <script src="{{ url_for('descriptions.static', filename='jquery/jquery.min.js') }}"></script>
+          <script src="{{ url_for('descriptions.static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+          <script src="{{ url_for('descriptions.static', filename='summernote/summernote.min.js') }}"></script>
+          <link rel="stylesheet" href="{{ url_for('descriptions.static', filename='bootstrap/css/bootstrap.scoped.css') }}">
+          <link rel="stylesheet" href="{{ url_for('descriptions.static', filename='summernote/summernote.min.css') }}">
+          <textarea id="description" name="description" style="height:70vh; border:1px solid #ddd;">{{ description|default('', true)|safe }}</textarea>
+      </div>
+  </div>
+  <button type="submit" class="btn-primary">Przejdź do kolejnego kroku</button>
+</form>
+
+
+<script>
+$(document).ready(function() {
+  $('#description').summernote({
+    height: 500,
+    toolbar: [
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['insert', ['link', 'picture']],
+      ['view', ['fullscreen', 'codeview']]
+    ],
+
+    // Czyste wklejanie
+    callbacks: {
+      onPaste: function(e) {
+        e.preventDefault();
+        let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+        document.execCommand('insertText', false, text);
+      }
+    }
+  });
+
+
+  // Obsługa kliknięcia na kafelki z szablonami
+  $('.feature-box').on('click', function() {
+    const fileName = $(this).data('template-file');
+    fetch(`/descriptions/static/section_template/${fileName}`)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.text();
+      })
+      .then(html => {
+        let currentContent = $('#description').summernote('code');
+        $('#description').summernote(
+          'code',
+          currentContent + `<section class="inserted-section">${html}</section>`
+        );
+
+        showFlash("Dodano blok do edytora", "success");
+      })
+      .catch(error => console.error('Fetch error:', error));
+  });
+});
+
+
+// --- Slider ikon ---
+
+$(function () {
+  const API_URL = "/icons/api/list";
+  const $picker = $("#icon-picker");
+  const $carouselWrapper = $(".icon-carousel-wrapper");
+
+  let icons = [];
+  let selectedImage = null; // jQuery object wskazujący zaznaczony <img> w edytorze
+  let selectedImageMeta = {}; // { width, height, attrWidth, attrHeight }
+
+  // FETCH
+  function fetchIcons() {
+    return fetch(API_URL)
+      .then(r => { if (!r.ok) throw new Error("Network response not ok"); return r.json(); })
+      .then(data => { icons = (Array.isArray(data)?data:[]).map(i=>({url:i.url||i})); renderIcons(); })
+      .catch(err => { console.error("Błąd pobierania ikon:", err); $picker.html('<div class="no-icons">Brak ikon</div>'); });
+  }
+
+  // RENDER
+  function renderIcons() {
+    if (!icons.length) { $picker.html('<div class="no-icons">Brak ikon</div>'); return; }
+    const html = icons.map(icon => `
+      <div class="icon-tile" data-url="${escapeHtml(icon.url)}" title="${escapeHtml(icon.url)}">
+        <img src="${escapeHtml(icon.url)}" alt="">
+      </div>
+    `).join("");
+    $picker.html(html);
+
+    $picker.find(".icon-tile").on("click", function () {
+      const url = $(this).data("url");
+      if (!url) return;
+      if (selectedImage && selectedImage.length) {
+        // PODMIANA: zachowaj wymiary / atrybuty
+        try {
+          // ustaw src
+          selectedImage.attr("src", url);
+
+          // przywróć zapisane atrybuty jeżeli były
+          if (selectedImageMeta.attrWidth) {
+            selectedImage.attr("width", selectedImageMeta.attrWidth);
+          } else {
+            // jeśli nie było atrybutu width -> ustaw klasę ograniczającą rozmiar
+            selectedImage.addClass("icon-normal opis img-fluid");
+            selectedImage.css({ width: "60", height: "60" }); // usuń inline width/height jeśli istnieją
+          }
+          if (selectedImageMeta.attrHeight) {
+            selectedImage.attr("height", selectedImageMeta.attrHeight);
+          }
+
+          // jeśli mieliśmy zapisany computed px rozmiar, przytnij tymczasowo (opcjonalne)
+          if (!selectedImageMeta.attrWidth && selectedImageMeta.computedWidth) {
+            selectedImage.css({ maxWidth: selectedImageMeta.computedWidth + "px" });
+          }
+
+          clearSelection();
+          showFlash("Ikona została podmieniona", "success");
+        } catch (err) {
+          console.error("Błąd podmiany obrazka:", err);
+        }
+      } else {
+        // WSTAW: Summernote jeśli działa (z klasą ograniczającą)
+        insertOrFallbackImage(url);
+        showFlash("Dodano ikonę do opisu", "success");
+      }
+    });
+
+    initCarouselControls();
+  }
+
+  // INSERT / FALLBACK
+  function insertOrFallbackImage(url) {
+    const htmlImg = `<img width="60" src="${escapeHtml(url)}" alt="ikona-opis" class="icon-normal opis img-fluid" height="60"" />`;
+    try {
+      if ($("#description").data("summernote")) {
+        // summernote: insertImage nie dodaje klasy, więc użyjemy insertNode przez DOM lub wstawimy HTML
+        $("#description").summernote('pasteHTML', htmlImg);
+        return;
+      }
+    } catch (e) {
+      console.warn("Summernote insert failed, fallbacking:", e);
+    }
+    // fallback: textarea / zwykły content
+    const $ta = $("#description");
+    if ($ta.length && $ta.is('textarea')) {
+      $ta.val(($ta.val() || "") + htmlImg);
+    } else if ($ta.length) {
+      // contenteditable fallback
+      $ta.append(htmlImg);
+    }
+  }
+
+  // SELECT IMAGE IN EDITOR
+  function setupEditorImageSelection() {
+    $(document).on("click", ".note-editable img", function (e) {
+      e.stopPropagation();
+      selectEditorImage($(this));
+    });
+    $(document).on("click", "#description img", function (e) {
+      e.stopPropagation();
+      selectEditorImage($(this));
+    });
+    $(document).on("click", function (e) {
+      if ($(e.target).closest('.icon-picker-grid, .icon-tile, .icon-carousel-wrapper').length) return;
+      if ($(e.target).closest('.note-editable img, #description img').length) return;
+      clearSelection();
+    });
+  }
+
+  function selectEditorImage($img) {
+    if (!($img && $img.length)) return;
+    clearSelection();
+    selectedImage = $img;
+
+    // ZAPISZ meta — atrybuty width/height (jeśli były) i computed width (px)
+    selectedImageMeta = {
+      attrWidth: $img.attr('width') || null,
+      attrHeight: $img.attr('height') || null
+    };
+    // computed size (px) - tylko gdy atrybutów nie ma
+    try {
+      if (!selectedImageMeta.attrWidth) {
+        selectedImageMeta.computedWidth = $img[0].getBoundingClientRect().width || null;
+      }
+    } catch(e){ selectedImageMeta.computedWidth = null; }
+
+    selectedImage.addClass("selected-editor-image");
+    // upewnij się, że nie ma klasy inserted-icon (żeby pokazać oryginalny wygląd)
+    selectedImage.removeClass("inserted-icon");
+  }
+
+  function clearSelection() {
+    if (selectedImage && selectedImage.length) selectedImage.removeClass("selected-editor-image");
+    selectedImage = null;
+    selectedImageMeta = {};
+  }
+
+  // CAROUSEL
+  function initCarouselControls() {
+    const $container = $carouselWrapper;
+    if (!$container.length) return;
+    $("#iconPrevBtn").off("click").on("click", () => {
+      $container[0].scrollBy({ left: -($container.innerWidth() || 300), behavior: "smooth" });
+    });
+    $("#iconNextBtn").off("click").on("click", () => {
+      $container[0].scrollBy({ left: ($container.innerWidth() || 300), behavior: "smooth" });
+    });
+    $container.on("wheel", (e) => {
+      e.preventDefault();
+      $container[0].scrollBy({ left: e.originalEvent.deltaY, behavior: "auto" });
+    });
+  }
+
+  // HELPERS
+  function escapeHtml(s) {
+    if (!s) return "";
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function showFlash(msg, type="info") {
+    if (typeof window.showFlash === "function") { window.showFlash(msg, type); return; }
+    const $f = $(`<div class="flash-temp flash-${type}">${msg}</div>`);
+    $("body").append($f);
+    $f.css({position:'fixed',right:20,bottom:20,'z-index':99999, padding:'10px 14px', background: type==='success'?'#27ae60':'#3498db', color:'#fff', 'border-radius':'8px'});
+    setTimeout(()=> $f.fadeOut(300,function(){ $f.remove(); }), 1600);
+  }
+
+  // START
+  setupEditorImageSelection();
+  fetchIcons();
+});
+
+
+
+
+</script>
+{% endblock %}
+

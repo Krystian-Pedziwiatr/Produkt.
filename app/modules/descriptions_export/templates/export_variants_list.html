@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Eksport opisów – {{ product.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('descriptions_export.static', filename='css/export.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<div class="export-wrapper">
+
+    <h1 class="module-name">Warianty produktu</h1>
+    <p>Produkt {{ product.name }} posiada następujące warianty, kliknij w odpowiedni przycisk aby skopiować opis danego wariantu.</p>
+    <div class="variants-list">
+        {% for v in variants %}
+        <div class="variant-card">
+
+            <div class="left">
+                <h3 class="variant-title">{{ v.color }}</h3>
+
+                {% if v.image_url %}
+                    <img src="{{ v.image_url }}" class="variant-thumb">
+                {% endif %}
+            </div>
+
+            <div class="right">
+                <button class="btn-copy"
+                        onclick="copyDescription('{{ url_for('descriptions_export.get_description', variant_id=v.id, lang='pl') }}')">
+                    Kopiuj opis PL
+                </button>
+
+                <button class="btn-copy"
+                        onclick="copyDescription('{{ url_for('descriptions_export.get_description', variant_id=v.id, lang='en') }}')">
+                    Kopiuj opis EN
+                </button>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script>
+async function copyDescription(url) {
+    const res = await fetch(url);
+    const text = await res.text();
+    await navigator.clipboard.writeText(text);
+    alert("Skopiowano!");
+}
+</script>
+{% endblock %}

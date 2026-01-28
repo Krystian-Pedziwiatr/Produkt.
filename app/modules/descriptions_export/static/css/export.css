@@ -1,0 +1,231 @@
+/* ============================================
+   GLOBAL RESET
+============================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ============================================
+   KONTAINER GŁÓWNY MODUŁU
+============================================ */
+.export-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 20px;
+    font-family: "Inter", sans-serif;
+}
+
+/* ============================================
+   NAGŁÓWEK EXPORTU
+============================================ */
+.export-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.export-header img {
+    width: 90px;
+    height: auto;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+}
+
+.export-header .module-name {
+    font-size: 34px;
+    font-weight: 700;
+    color: #1c1d21;
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+}
+
+.export-header .module-description {
+    font-size: 15px;
+    color: #6d7179;
+}
+
+/* ============================================
+   TABELA LISTY PRODUKTÓW
+============================================ */
+.export-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.96);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    backdrop-filter: blur(6px);
+}
+
+/* NAGŁÓWEK TABELI */
+.export-table thead {
+    background: rgba(34,40,46,0.85); /* kolor navbar/sidebar */
+}
+
+.export-table thead th {
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 16px 18px;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* KOMÓRKI */
+.export-table td {
+    padding: 15px 18px;
+    font-size: 15px;
+    color: #2d2f35;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+/* HOVER TYLKO W BODY */
+.export-table tbody tr:hover {
+    background: #f4f6f8;
+}
+
+/* ============================================
+   PRZYCISKI W TABELI
+============================================ */
+.btn-small {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+    transition: all .2s ease;
+    color: #fff !important;
+}
+
+/* gradient premium */
+.btn-primary {
+    background: linear-gradient(
+        135deg,
+        #4ea8ff 0%,
+        #6b6dff 35%,
+        #9b4dff 100%
+    );
+    background-size: 230% 230%;
+}
+.btn-primary:hover {
+    background-position: 100% 0%;
+    transform: translateY(-2px);
+}
+
+.btn-delete {
+    background: #e74c3c;
+}
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* ============================================
+   WIDOK WARIANTÓW — GRID
+============================================ */
+.variants-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+/* ============================================
+   KAFEL WARIANTU
+============================================ */
+.variant-card {
+    background: rgba(255,255,255,0.92);
+    padding: 26px;
+    border-radius: 16px;
+    border: 1px solid rgba(240,240,240,0.9);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.07);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    transition: transform .15s ease, box-shadow .22s ease;
+}
+
+.variant-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+/* TYTUŁ WARIANTU */
+.variant-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f1f21;
+    margin-bottom: 14px;
+}
+
+/* MINIATURA */
+.variant-thumb {
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    margin-bottom: 18px;
+    background: #fafafa;
+}
+
+/* PRZYCISKI WARIANTÓW */
+.variant-actions {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn-copy {
+    padding: 9px 16px;
+    min-width: 130px;
+
+    /* głęboka czerń, lekki gradient premium */
+    background: linear-gradient(
+        135deg,
+        rgba(20,20,22,0.95) 0%,
+        rgba(28,28,32,0.95) 100%
+    );
+    backdrop-filter: blur(4px);
+
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    color: #fff; /* biały tekst */
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all .25s ease;
+}
+
+/* Hover — subtelne rozjaśnienie + delikatne uniesienie */
+.btn-copy:hover {
+    background: linear-gradient(
+        135deg,
+        rgba(35,35,38,1) 0%,
+        rgba(50,50,55,1) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+}
+
+
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 600px) {
+    .export-header img {
+        width: 70px;
+    }
+    .export-header .module-name {
+        font-size: 26px;
+    }
+    .variant-card {
+        padding: 20px;
+    }
+}
