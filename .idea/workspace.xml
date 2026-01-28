@@ -5,84 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2296607c-10b0-4625-a3f9-9970083a0e10" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ShopBooster.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/bootstrap/css/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/action_select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/create.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/create_description.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/css/products_list.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/jquery/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/js/create-description.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/js/editor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/akcesoria.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/dodatkowe-atrybuty.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/informacje-dodatkowe.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/montaz.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/short-lead.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/szczegolowy-opis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/static/section_template/zastosowanie.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/action_select.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/create_description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/create_description_en.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions/templates/variants.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/static/css/export.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/templates/export_products_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/descriptions_export/templates/export_variants_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/icons/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/icons/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/icons/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/icons/static/css/icons.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/icons/templates/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/icons/templates/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/icons/templates/manage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/integrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/integrations/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/integrations/templates/import_export.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/integrations/templates/integrations_api.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/photos/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/photos/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/photos/static/css/photos.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/photos/templates/photos_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/photos/templates/photos_resizer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/photos/templates/photos_settings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/seo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/seo/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/seo/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/seo/static/css/seo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/seo/templates/seo_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/seo/templates/seo_result.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/settings/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/settings/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/settings/static/css/shop_settings.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/settings/templates/account_settings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/settings/templates/shop_settings.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/variants/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/variants/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/variants/static/css/variants.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/variants/static/css/variants_add.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/variants/templates/variants_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/variants/templates/variants_edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/modules/variants/templates/variants_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/auth.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/dashboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/auth_base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/dashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,9 +23,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Krystian-Pedziwiatr"
+  }
+}]]></component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="bc0d418f-661e-4f3a-b0f1-4732db672e84" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Krystian-Pedziwiatr/Produkt..git",
+    "accountId": "bc0d418f-661e-4f3a-b0f1-4732db672e84"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
