@@ -2,3 +2,8 @@ flask
 flask_sqlalchemy
 flask_bcrypt
 flask_login
+flask-migrate
+flask-wtf
+oci
+Pillow
+beautifulsoup4
