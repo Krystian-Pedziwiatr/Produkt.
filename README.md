@@ -11,7 +11,7 @@ z przygotowaniem treści produktowych oraz zapewnia spójność struktury opisó
 - kreator opisów produktów oparty o gotowe komponenty HTML 
 - eksport opisów do plików HTML
 - moduł skalowania i optymalizacji zdjęć produktowych
-- walidacja treści - naliza słów kluczowych
+- walidacja treści - analiza słów kluczowych
 - system użytkowników z autoryzacją
 
 ## Zrzuty ekranu
@@ -45,3 +45,4 @@ internetowego.
 - JavaScript
 - Jinja2
 - SQLite / PostgreSQL
+
